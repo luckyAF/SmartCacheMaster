@@ -27,14 +27,16 @@ public class SaveJsonArrayActivity  extends BaseActivity {
     @Override
     public void initData() {
         dateType = "String";
-        addSubscribe(SmartCache.<JSONArray>get(CACHE_KEY_JSONOARRAY).subscribe(new Consumer<Response<JSONArray>>() {
+        addSubscribe(SmartCache.observe(CACHE_KEY_JSONOARRAY,JSONArray.class).subscribe(new Consumer<Response<JSONArray>>() {
             @Override
             public void accept(Response<JSONArray> response) throws Exception {
                 if(response.isUpdate()){
                     jsonArray = response.getData();
-                    txtNow.setText(response.getData().toString());
+                    if(null != jsonArray){
+                        txtNow.setText(response.getData().toString());
+                    }
                 }else{
-                    txtInit.setText(response.getData().toString());
+                    txtInit.setText(response.getData() == null ? "null" :response.getData().toString());
                 }
             }
         }));
@@ -73,7 +75,7 @@ public class SaveJsonArrayActivity  extends BaseActivity {
             e.printStackTrace();
         }
         jsonArray.put(now);
-        SmartCache.put(CACHE_KEY_JSONOARRAY,jsonArray);
+        //SmartCache.put(CACHE_KEY_JSONOARRAY,jsonArray);
     }
 
     @Override

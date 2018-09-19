@@ -12,7 +12,7 @@ import com.luckyaf.smart.smartcache.SmartCache;
 public class App extends Application{
     @Override
     public void onCreate() {
-        SmartCache.init(this).build();
+        SmartCache.newBuilder(this).build();
         super.onCreate();
     }
 }

@@ -25,13 +25,20 @@ public class SaveJsonObjectActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        dateType = "String";
-        addSubscribe(SmartCache.<JSONObject>get(CACHE_KEY_JSONOBJECT).subscribe(new Consumer<Response<JSONObject>>() {
+        dateType = "jsonObject";
+        addSubscribe(SmartCache.observe(CACHE_KEY_JSONOBJECT,JSONObject.class).subscribe(new Consumer<Response<JSONObject>>() {
+
             @Override
             public void accept(Response<JSONObject> response) throws Exception {
+
+                if(null ==response.getData()){
+                    return;
+                }
+
                 if(response.isUpdate()){
                     txtNow.setText(response.getData().toString());
                 }else{
+
                     txtInit.setText(response.getData().toString());
                 }
             }
@@ -66,7 +73,7 @@ public class SaveJsonObjectActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        SmartCache.put(CACHE_KEY_JSONOBJECT,jsonObject);
+        //SmartCache.put(CACHE_KEY_JSONOBJECT,jsonObject);
     }
 
     @Override

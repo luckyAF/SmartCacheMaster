@@ -35,7 +35,7 @@ public class SaveBitmapActivity extends BaseActivity {
         imgInit.setVisibility(View.VISIBLE);
         imgNow.setVisibility(View.VISIBLE);
 
-        addSubscribe(SmartCache.<Bitmap>get(CACHE_KEY_BITMAP).subscribe(new Consumer<Response<Bitmap>>() {
+        addSubscribe(SmartCache.observe(CACHE_KEY_BITMAP,Bitmap.class).subscribe(new Consumer<Response<Bitmap>>() {
             @Override
             public void accept(Response<Bitmap> response) throws Exception {
                 if (response.isUpdate()) {
@@ -73,7 +73,7 @@ public class SaveBitmapActivity extends BaseActivity {
 
         Resources res = getResources();
         Bitmap bitmap = BitmapFactory.decodeResource(res, R.drawable.img_test);
-        SmartCache.put(CACHE_KEY_BITMAP, bitmap);
+       // SmartCache.put(CACHE_KEY_BITMAP, bitmap);
     }
 
     @Override

@@ -9,8 +9,13 @@ public class Response<T> {
     private boolean update;
     private T data;
 
-    public Response(T value, boolean isUpdate){
-        this.data = value;
+    @SuppressWarnings("unchecked")
+    public Response(Object value, boolean isUpdate){
+        try {
+            this.data = (T)value;
+        }catch (ClassCastException e){
+            this.data = null;
+        }
         this.update = isUpdate;
     }
 

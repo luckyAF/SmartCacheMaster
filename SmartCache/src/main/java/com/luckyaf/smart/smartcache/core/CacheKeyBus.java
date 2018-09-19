@@ -5,9 +5,6 @@ import android.support.annotation.NonNull;
 import com.luckyaf.smart.smartcache.model.CacheValue;
 
 import io.reactivex.Flowable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Predicate;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
 
@@ -28,11 +25,11 @@ public class CacheKeyBus {
     }
 
     public static CacheKeyBus getInstance() {
-        return RxBusHolder.sInstance;
+        return RxBusHolder.INSTANCE;
     }
 
     private static class RxBusHolder {
-        private static final CacheKeyBus sInstance = new CacheKeyBus();
+        private static final CacheKeyBus INSTANCE = new CacheKeyBus();
     }
 
 

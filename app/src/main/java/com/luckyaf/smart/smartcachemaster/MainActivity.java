@@ -7,7 +7,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
+import com.luckyaf.smart.smartcachemaster.sample.OneKeyActivity;
 import com.luckyaf.smart.smartcachemaster.sample.SaveBitmapActivity;
 import com.luckyaf.smart.smartcachemaster.sample.SaveJsonArrayActivity;
 import com.luckyaf.smart.smartcachemaster.sample.SaveJsonObjectActivity;
@@ -21,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+    }
+
+    public void oneKey(View v){
+        startActivity(new Intent().setClass(this, OneKeyActivity.class));
     }
 
     public void string(View v) {

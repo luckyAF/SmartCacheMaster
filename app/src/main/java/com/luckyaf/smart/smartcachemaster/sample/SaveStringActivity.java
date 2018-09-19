@@ -22,7 +22,7 @@ public class SaveStringActivity extends BaseActivity{
     @Override
     public void initData() {
         dateType = "String";
-        addSubscribe(SmartCache.<String>get(CACHE_KEY_STRING).subscribe(new Consumer<Response<String>>() {
+        addSubscribe(SmartCache.observe(CACHE_KEY_STRING,String.class).subscribe(new Consumer<Response<String>>() {
             @Override
             public void accept(Response<String> stringResponse) throws Exception {
                 Log.d("stringResponse",stringResponse.toString());
