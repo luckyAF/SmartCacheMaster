@@ -21,7 +21,6 @@ import io.reactivex.Observable;
 
 /**
  * 类描述：
- *
  * @author Created by luckyAF on 2018/9/13
  */
 @SuppressWarnings("unused")
